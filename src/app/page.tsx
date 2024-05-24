@@ -1,12 +1,17 @@
-"use client";
 import Image from "next/image";
 import styles from "./page.module.css";
 import DrawerAppBar from "@/components/Appbar/Appbar";
+import Container from '@mui/material/Container'
 
-export default function Home() {
+export default async function Home() {
   return (
     <main className={styles.main}>
-        <DrawerAppBar window={() => window}/>
+      <Container>
+      <div>
+        <Image src="/home-cover.png" alt="" fill/>
+      </div>
+
+      </Container>
     </main>
   );
 }
