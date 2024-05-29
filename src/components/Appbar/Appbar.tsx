@@ -26,7 +26,7 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ['Home', 'About', 'Contact'];
+const navItems = ['Beranda', 'Profil', 'Kegiatan', 'Publikasi'];
 
 export default function DrawerAppBar(props: Props) {
   const {  children } = props;
@@ -39,14 +39,15 @@ export default function DrawerAppBar(props: Props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+        Menu
       </Typography>
       <Divider />
       <List>
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+              <p>{item}</p>
+              {/* <ListItemText primary={item} /> */}
             </ListItemButton>
           </ListItem>
         ))}
@@ -54,16 +55,16 @@ export default function DrawerAppBar(props: Props) {
     </Box>
   );
 
-  const container = window !== undefined ? () => window.document.body : undefined;
+  const container = global.window !== undefined ? () => window.document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box>
       <CssBaseline />
       <AppBar style={{backgroundColor : 'white'}} component="nav">
-        <Toolbar style={{height : '110px'}}>
-          <Container maxWidth="lg" style={{display : 'flex', flexDirection : 'row', alignItems : 'center', justifyContent : 'space-between'}}>
+        <Toolbar style={{height : '81px'}}>
+          <Container maxWidth="md" style={{display : 'flex', flexDirection : 'row', alignItems : 'center', justifyContent : 'space-between'}}>
           <IconButton
-            color="inherit"
+            color="primary"
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
@@ -75,10 +76,13 @@ export default function DrawerAppBar(props: Props) {
 
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: 'black' }}>
+              <Button  key={item} sx={{ color: 'black', textTransform : 'none', fontWeight : 500,  }} >
                 {item}
               </Button>
             ))}
+            <Button  variant='outlined' sx={{ marginLeft : '16px', textTransform : 'none', fontWeight : 500, backgroundColor : '#FED186', color : '#E23228', borderColor : '#E23228', borderWidth : 1, borderRadius :2  }} >
+                Jadi Relawan!
+              </Button>
           </Box>
           </Container>
         </Toolbar>
@@ -100,10 +104,10 @@ export default function DrawerAppBar(props: Props) {
           {drawer}
         </Drawer>
       </nav>
-      <Box component="main" sx={{ p: 3 }}>
+      {/* <Box component="main" sx={{ p: 3 }}> */}
         <Toolbar />
         {children}
-      </Box>
+      {/* </Box> */}
     </Box>
   );
 }
