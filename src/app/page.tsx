@@ -1,24 +1,77 @@
 import styles from "./page.module.css";
 import DrawerAppBar from "@/components/Appbar/Appbar";
 import Button from '@mui/material/Button';
-import { Image } from "@/components/Image/Image";
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container';
+import Image from "next/image";
 
 export default async function Home() {
   return (
     <main>
-      <Container maxWidth="md">
-      <div style={{display : 'flex'}}>
-      <Image height="80%" width="100%"/>
-      <div style={{position : 'absolute', bottom: '0', marginLeft : '20px'}}>
-        <Typography variant="h5"  color="initial">90 persen Anggota Rekat adalah Penyintas TB Resisten Obat</Typography>
-        <Typography variant="subtitle1" color="initial">90 persen Anggota Rekat adalah Penyintas TB Resisten Obat</Typography>
-      <Button variant="contained">asdfasdf</Button>
-      </div>
+      <Container maxWidth="lg" style={{paddingRight : '128px', paddingLeft : '128px'}}>
+      <div style={{display : 'flex', justifyContent : 'space-between', flexDirection : 'row', marginTop : '64px', alignItems : 'center'}}>
+        <div style={{display : 'flex', flexDirection : 'column', marginRight : '64px'}}>
+          <Typography variant="h4" fontWeight={600} component="div" gutterBottom>
+          Bergabung bersama 
+          Kami Untuk Melawan
+          Tuberkolosis
+          </Typography>
+          <Typography marginTop={'8x'} variant="body1" gutterBottom>            
+            Yuk, bergabung bersama kami untuk melawan tuberkolosis. Dengan bergabung bersama kami, kamu akan mendapatkan informasi terkini seputar tuberkolosis, serta dapat berpartisipasi dalam kegiatan-kegiatan yang kami adakan
+          </Typography>
+          <Button  variant='outlined' sx={{ marginTop : '16px',textTransform : 'none', fontWeight : 600, backgroundColor : '#FED186', color : '#E23228', borderColor : '#E23228', borderWidth : 1.5, borderRadius :2 , maxWidth : '147px' }} >
+                Jadi Relawan!
+              </Button>
+        </div>
+
+        <div>
+          <Image src={'/hero.png'} alt="" width={350} height={350}/>
+        </div>
 
       </div>
+
+      <div style={{backgroundColor : '#F13C28', borderRadius : 8,paddingTop : '16px', paddingBottom : '16px', paddingRight : '36px', paddingLeft : '36px', marginTop  : '64px', display : 'flex',flexDirection : 'column', justifyContent : 'space-between',}}>
+      <div style={{display : 'flex',flexDirection : 'row', justifyContent : 'space-between',}}>
+        <div style={{display : 'flex', flexDirection : 'column'}}>
+          <Typography variant="h6" color={'white'}>Orang dengan <br/> TBC</Typography>
+          <Typography variant="h4" fontWeight={600} color={'white'} marginTop={'8px'}>12312312</Typography>
+        </div>
+        <div style={{display : 'flex', flexDirection : 'column'}}>
+          <Typography variant="h6" color={'white'}>Orang dengan TBC <br/> Resistan Obat
+</Typography>
+          <Typography variant="h4" fontWeight={600} color={'white'} marginTop={'8px'}>12312312</Typography>
+        </div>
+        <div style={{display : 'flex', flexDirection : 'column'}}>
+          <Typography variant="h6" color={'white'}>Keberhasilan <br/>Pengobatan</Typography>
+          <Typography variant="h4" fontWeight={600} color={'white'} marginTop={'8px'}>86%</Typography>
+        </div>
+        <div style={{display : 'flex', flexDirection : 'column'}}>
+          <Typography variant="h6" color={'white'}>Kematian <br/> Akibat TBC</Typography>
+          <Typography variant="h4" fontWeight={600} color={'white'} marginTop={'8px'}>86%</Typography>
+        </div>
+      </div>
+      <Typography variant="subtitle2" color={'white'} marginTop={'16px'}>*klik disini untuk sumber data</Typography>
+
+      </div>
+
       </Container>
+        <div style={{backgroundColor : '#F13C28', marginTop : '64px', width : '100%'}}>
+        <Container maxWidth="lg" style={{paddingRight : '128px', paddingLeft : '128px', paddingTop : '64px', paddingBottom : '64px'}} >
+
+        <Typography variant="h4" fontWeight={600} color={'white'}>Tentang Kami</Typography>
+
+        <div style={{flexDirection : 'row', display : 'flex',justifyContent : 'space-between', alignItems : 'start', paddingTop : '48px'}}>
+          <div style={{paddingRight : '48px', paddingLeft : '24px'}}>
+            <Image src={'/rekat.png'} alt="" width={280} height={280}/>
+          </div>
+          <div>
+            <Typography variant="h5" marginTop={'24px'} fontWeight={500} color={'white'}>Kami yang tergabung dalam paguyuban TB-MDR adalah pasien-pasien yang sudah dinyatakan sembuh dari penyakit TB-MDR. Kami mempunyai inisiatif untuk membantu sesama penderita agar bisa melewati masa-masa terapi minum obat dengan tujuan mengurangi pasien putus obat. </Typography>
+          </div>
+
+        </div>
+      </Container>
+
+        </div>
 
     </main>
   );

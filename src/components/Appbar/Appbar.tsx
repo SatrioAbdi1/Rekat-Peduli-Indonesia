@@ -62,7 +62,7 @@ export default function DrawerAppBar(props: Props) {
       <CssBaseline />
       <AppBar style={{backgroundColor : 'white'}} component="nav">
         <Toolbar style={{height : '81px'}}>
-          <Container maxWidth="md" style={{display : 'flex', flexDirection : 'row', alignItems : 'center', justifyContent : 'space-between'}}>
+          <Container maxWidth="lg" style={{display : 'flex', flexDirection : 'row', alignItems : 'center', justifyContent : 'space-between', paddingRight : '128px', paddingLeft : '128px' }}>
           <IconButton
             color="primary"
             aria-label="open drawer"
