@@ -8,7 +8,7 @@ import Link from 'next/link';
 export const ElevatedCard = () => {
     return(
         <MuiCard   variant='elevation' style={{width : "300px", height : 'auto', cursor :'pointer'}}>
-            <Link href="/">
+            <Link href="/blog/tahukah-kamu-pencegahan-tbc-dapat-dimulai-dari-diri-sendiri?">
             <div style={{ margin : 16 }}>
             <Image
                 alt='Mountains'

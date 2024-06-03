@@ -1,25 +1,11 @@
-"use client"
 import { ElevatedCard } from '@/components/Card';
 import Container from '@mui/material/Container';
-
-import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Pagination from '@mui/material/Pagination';
-import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 
 
-
-
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
-
-export default function BlogPage (){
+export default async function BlogsPage (){
     return(
         <main style={{
             display: 'flex',
