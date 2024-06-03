@@ -31,9 +31,11 @@ export default async function Home() {
           <Typography marginTop={'8x'} variant="body1" gutterBottom>            
             Yuk, bergabung bersama kami untuk melawan tuberkolosis. Dengan bergabung bersama kami, kamu akan mendapatkan informasi terkini seputar tuberkolosis, serta dapat berpartisipasi dalam kegiatan-kegiatan yang kami adakan
           </Typography>
-          <Button  variant='outlined' sx={{ marginTop : '16px',textTransform : 'none', fontWeight : 600, backgroundColor : '#FED186', color : '#E23228', borderColor : '#E23228', borderWidth : 1.5, borderRadius :2 , maxWidth : '147px' }} >
-                Jadi Relawan!
-              </Button>
+          <Button  variant='outlined' sx={{ marginTop : '16px',textTransform : 'none', fontWeight : 500, backgroundColor : '#FED186', color : '#E23228', borderColor : '#E23228', borderWidth : 1, borderRadius :2 , maxWidth : '147px', height : '50px' }} >
+                <Link href={'https://forms.gle/1gyUhdkcGPgP872o6'} target="_blank">
+                  Jadi Relawan!
+                </Link>
+          </Button>
         </div>
 
         <div>
@@ -97,7 +99,7 @@ export default async function Home() {
           })}
         </div>
 
-        <Link href={'/'}>
+        <Link href={'/blog'}>
           <Typography variant="h6" sx={{textDecoration : 'underline', cursor : 'pointer'}} color={'#F13C28'} marginTop={'24px'}>Lihat Lainnya</Typography>
         </Link>
       </Container>
@@ -108,20 +110,16 @@ export default async function Home() {
         <Typography variant="h4" fontWeight={600} color={'white'}>Podcast</Typography>
         <Typography variant="h6" marginTop={'8px'} color={'white'}>Jelajahi dampak apa saja yang sudah kami lakukan hingga saat ini</Typography>
         <div style={{marginTop : '24px', flexDirection : 'row', display : 'flex', justifyContent : 'space-between'}}>
-          {[1,23,4,].map((item) => {
-            return(
-              <ElevatedCard/>
-
-            )
-          })}
-        </div>
-
-        <Link href={'/'}>
+        <iframe width="450" height="300" src="https://www.youtube-nocookie.com/embed/pn61x7syc9o?si=TlnXFFKFOI7SIKAD&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <iframe width="450" height="300" src="https://www.youtube-nocookie.com/embed/YvaVwS5MajE?si=yum98oMhp_Tje0nl&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  
+        </div>       
+        <Link href={'https://www.youtube.com/@rekatpeduliindonesia8494/videos'} target="_blank">        
           <Typography variant="h6" sx={{textDecoration : 'underline', cursor : 'pointer'}} color={'white'} marginTop={'24px'}>Lihat Lainnya</Typography>
         </Link>
       </Container>
 
         </div>
+
 
         <Container maxWidth="lg" style={{paddingRight : '128px', paddingLeft : '128px', paddingTop : '64px', paddingBottom : '64px'}} >
         <Typography variant="h4" fontWeight={600}>Blog</Typography>
@@ -135,7 +133,7 @@ export default async function Home() {
           })}
         </div>
 
-        <Link href={'/'}>
+        <Link href={'/blog'}>
           <Typography variant="h6" sx={{textDecoration : 'underline', cursor : 'pointer'}} color={'#F13C28'} marginTop={'24px'}>Lihat Lainnya</Typography>
         </Link>
       </Container>

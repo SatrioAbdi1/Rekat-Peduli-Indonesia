@@ -16,6 +16,9 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation'
+import Link from 'next/link';
+
 
 interface Props {
   /**
@@ -26,11 +29,21 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ['Beranda', 'Profil', 'Kegiatan', 'Publikasi'];
+const navItems = [
+  {name : 'Beranda', value : '/'}, 
+  {name : 'Profil', value : '/profil'}, 
+  {name : 'Blog', value: '/blog'}, 
+  {name : 'Publikasi', value : '/publikasi'}
+];
+
+
 
 export default function DrawerAppBar(props: Props) {
   const {  children } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const pathname = usePathname()
+
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -44,9 +57,9 @@ export default function DrawerAppBar(props: Props) {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+          <ListItem key={item.value} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
-              <p>{item}</p>
+              <p>{item.name}</p>
               {/* <ListItemText primary={item} /> */}
             </ListItemButton>
           </ListItem>
@@ -57,11 +70,13 @@ export default function DrawerAppBar(props: Props) {
 
   const container = global.window !== undefined ? () => window.document.body : undefined;
 
+
+
   return (
     <Box>
       <CssBaseline />
       <AppBar style={{backgroundColor : 'white'}} component="nav">
-        <Toolbar style={{height : '81px'}}>
+        <Toolbar style={{height : '94px'}}>
           <Container maxWidth="lg" style={{display : 'flex', flexDirection : 'row', alignItems : 'center', justifyContent : 'space-between', paddingRight : '128px', paddingLeft : '128px' }}>
           <IconButton
             color="primary"
@@ -74,14 +89,18 @@ export default function DrawerAppBar(props: Props) {
           </IconButton>
           <Image src={'/rekat.png'} alt="" width={75} height={75}/>
 
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          <Box sx={{ display: { xs: 'none', sm: 'flex', } }}>
             {navItems.map((item) => (
-              <Button  key={item} sx={{ color: 'black', textTransform : 'none', fontWeight : 500,  }} >
-                {item}
-              </Button>
+                <Typography key={item.value} sx={{textDecoration :  item.value === pathname ? 'underline' : ''}} variant='subtitle1' color={item.value === pathname ?  '#E23228' : 'black'} fontWeight={500} padding={'8px'} textTransform={'none'}>
+                  <Link href={item.value}  >
+                    {item.name}
+                  </Link>
+                </Typography>
             ))}
-            <Button  variant='outlined' sx={{ marginLeft : '16px', textTransform : 'none', fontWeight : 500, backgroundColor : '#FED186', color : '#E23228', borderColor : '#E23228', borderWidth : 1, borderRadius :2  }} >
-                Jadi Relawan!
+            <Button variant='outlined' sx={{ marginLeft : '16px', textTransform : 'none', fontWeight : 500, backgroundColor : '#FED186', color : '#E23228', borderColor : '#E23228', borderWidth : 1, borderRadius :2  }} >
+                <Link href={'https://forms.gle/1gyUhdkcGPgP872o6'} target={'_blank'}>
+                Jadi Relawan
+                </Link>
               </Button>
           </Box>
           </Container>

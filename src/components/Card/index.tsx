@@ -2,11 +2,13 @@
 import MuiCard from '@mui/material/Card';
 import Image from 'next/image';
 import Typography from '@mui/material/Typography'
+import Link from 'next/link';
 
 
 export const ElevatedCard = () => {
     return(
-        <MuiCard onClick={() => {}}  variant='elevation' style={{width : "300px", height : 'auto', cursor :'pointer'}}>
+        <MuiCard   variant='elevation' style={{width : "300px", height : 'auto', cursor :'pointer'}}>
+            <Link href="/">
             <div style={{ margin : 16 }}>
             <Image
                 alt='Mountains'
@@ -30,6 +32,7 @@ export const ElevatedCard = () => {
 
                 </Typography>
             </div>
+            </Link>
         </MuiCard>
     )
 }
