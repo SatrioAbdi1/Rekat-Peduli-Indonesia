@@ -3,10 +3,14 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Pagination from '@mui/material/Pagination';
 import Box from '@mui/material/Box';
+import DrawerAppBar from "@/components/Appbar/Appbar";
+import { Footer } from "@/components/Footer/Footer";
 
 
 export default async function BlogsPage (){
     return(
+        <DrawerAppBar>
+
         <main style={{
             display: 'flex',
             flexDirection: 'column',
@@ -33,5 +37,7 @@ export default async function BlogsPage (){
        
             </Container>
         </main>
+        <Footer/>
+        </DrawerAppBar>
     )
 } 

@@ -1,11 +1,12 @@
 import styles from "./page.module.css";
-import DrawerAppBar from "@/components/Appbar/Appbar";
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container';
 import Image from "next/image";
 import { Metadata } from "next";
 import { ElevatedCard } from "@/components/Card";
+import DrawerAppBar from "@/components/Appbar/Appbar";
+import { Footer } from "@/components/Footer/Footer";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   return (
+    <DrawerAppBar>
     <main style={{
       display: 'flex',
       flexDirection: 'column',
@@ -139,5 +141,7 @@ export default async function Home() {
       </Container>
 
     </main>
+    <Footer/>
+    </DrawerAppBar>
   );
 }

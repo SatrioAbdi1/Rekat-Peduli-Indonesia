@@ -2,12 +2,17 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box';
 import Image from 'next/image';
+import DrawerAppBar from "@/components/Appbar/Appbar";
+import { Footer } from "@/components/Footer/Footer";
+
 
 
 
 
 export default async function BlogPage({ params }: { params: { slug: string } }) {
     return (
+        <DrawerAppBar>
+
         <main style={{
             display: 'flex',
             flexDirection: 'column',
@@ -52,5 +57,8 @@ Lalu, bagaimana caranya agar kita sebagai orang yang sehat dapat terhindar dari 
 
             </Container>
         </main>
+        <Footer/>
+        </DrawerAppBar>
+
     )
   }
