@@ -25,11 +25,8 @@ export default async function RootLayout({
     <html lang="en">
         <body className={inter.className}>
           <AppRouterCacheProvider>
-            <ThemeProvider theme={theme}>
-              <DrawerAppBar>
-              {children}
-              <Footer/>
-              </DrawerAppBar>
+            <ThemeProvider theme={theme}>      
+              {children}     
             </ThemeProvider>
           </AppRouterCacheProvider>
         </body>
