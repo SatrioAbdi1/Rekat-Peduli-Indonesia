@@ -4,10 +4,17 @@ import Image from 'next/image';
 import Typography from '@mui/material/Typography'
 import Link from 'next/link';
 
+interface CardProps {
+    title? : string | undefined;
+    description? : string | undefined;
+    image? : string | undefined;
+    key: number | undefined;
 
-export const ElevatedCard = () => {
+}
+
+export const ElevatedCard = (props : CardProps) => {
     return(
-        <MuiCard   variant='elevation' style={{width : "300px", height : 'auto', cursor :'pointer'}}>
+        <MuiCard  key={props.key}  variant='elevation' style={{width : "300px", height : 'auto', cursor :'pointer'}}>
             <Link href="/blog/tahukah-kamu-pencegahan-tbc-dapat-dimulai-dari-diri-sendiri?">
             <div style={{ margin : 16 }}>
             <Image

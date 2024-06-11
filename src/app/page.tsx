@@ -93,9 +93,9 @@ export default async function Home() {
         <Typography variant="h4" fontWeight={600}>Dampak Kami</Typography>
         <Typography variant="h6" marginTop={'8px'}>Jelajahi dampak apa saja yang sudah kami lakukan hingga saat ini</Typography>
         <div style={{marginTop : '24px', flexDirection : 'row', display : 'flex', justifyContent : 'space-between'}}>
-          {[1,23,4,].map((item) => {
+          {[1,23,4,].map((item, index) => {
             return(
-              <ElevatedCard/>
+              <ElevatedCard key={index}/>
 
             )
           })}
@@ -112,8 +112,8 @@ export default async function Home() {
         <Typography variant="h4" fontWeight={600} color={'white'}>Podcast</Typography>
         <Typography variant="h6" marginTop={'8px'} color={'white'}>Jelajahi dampak apa saja yang sudah kami lakukan hingga saat ini</Typography>
         <div style={{marginTop : '24px', flexDirection : 'row', display : 'flex', justifyContent : 'space-between'}}>
-        <iframe width="450" height="300" src="https://www.youtube-nocookie.com/embed/pn61x7syc9o?si=TlnXFFKFOI7SIKAD&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <iframe width="450" height="300" src="https://www.youtube-nocookie.com/embed/YvaVwS5MajE?si=yum98oMhp_Tje0nl&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  
+        <iframe width="450" height="300" src="https://www.youtube-nocookie.com/embed/pn61x7syc9o?si=TlnXFFKFOI7SIKAD&amp;controls=0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+        <iframe width="450" height="300" src="https://www.youtube-nocookie.com/embed/YvaVwS5MajE?si=yum98oMhp_Tje0nl&amp;controls=0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>  
         </div>       
         <Link href={'https://www.youtube.com/@rekatpeduliindonesia8494/videos'} target="_blank">        
           <Typography variant="h6" sx={{textDecoration : 'underline', cursor : 'pointer'}} color={'white'} marginTop={'24px'}>Lihat Lainnya</Typography>
@@ -127,9 +127,9 @@ export default async function Home() {
         <Typography variant="h4" fontWeight={600}>Blog</Typography>
         <Typography variant="h6" marginTop={'8px'}>Jelajahi dampak apa saja yang sudah kami lakukan hingga saat ini</Typography>
         <div style={{marginTop : '24px', flexDirection : 'row', display : 'flex', justifyContent : 'space-between'}}>
-          {[1,23,4,].map((item) => {
+          {[1,23,4,].map((item,index) => {
             return(
-              <ElevatedCard/>
+              <ElevatedCard key={index}/>
 
             )
           })}
