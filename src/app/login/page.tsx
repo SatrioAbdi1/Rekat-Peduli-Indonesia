@@ -34,7 +34,7 @@ export default function LoginPage(){
                     <Box sx={{marginBottom : '16px'}}>
                     <Typography variant='body1' fontWeight={500} marginBottom={'8px'}>Password</Typography>
 
-                    <input name="password" type="password" defaultValue={state?.password ?? ""} style={{backgroundColor : 'white', borderRadius : '4px',borderWidth : '0px', color : 'black', marginBottom : '8px', height : '48px',  width : '100%', fontFamily : montserrat.style.fontFamily,padding: '8px', fontSize : '16px', fontWeight : 500}} id="outlined-basic"  type='password'  />
+                    <input name="password" type="password" defaultValue={state?.password ?? ""} style={{backgroundColor : 'white', borderRadius : '4px',borderWidth : '0px', color : 'black', marginBottom : '8px', height : '48px',  width : '100%', fontFamily : montserrat.style.fontFamily,padding: '8px', fontSize : '16px', fontWeight : 500}} id="outlined-basic" />
                     </Box>
 
                     <Typography color={'red'} variant='body1' fontWeight={500} marginBottom={'8px'}>{state?.message}</Typography>

@@ -137,7 +137,7 @@ export function Sidebar(props: Props){
             display : {sm: ''},
           }}>
             <Box sx={{display : 'flex', justifyContent : 'flex-end'}}>
-              <ButtonLogout/>
+              {/* <ButtonLogout/> */}
             </Box>
             <Divider/>
         </Box>
