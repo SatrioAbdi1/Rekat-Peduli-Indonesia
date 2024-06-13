@@ -3,7 +3,7 @@ import {Typography, Button, Box} from '@mui/material'
 import { UsersTable } from "./users.table";
 import { User } from "@/lib/interface";
 import Link from "next/link";
-import { getUsers } from "@/lib/query";
+import { getUsers } from "@/lib/services";
 
 export default async function UsersPage(){
   const users = await getUsers();

@@ -16,3 +16,9 @@ export interface User{
     password? : string,
     role : string,
 }
+
+export interface ApiResponse<T> {
+    success: boolean;
+    data: T | null;
+    message: string;
+}

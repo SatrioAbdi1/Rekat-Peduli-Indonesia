@@ -1,10 +1,10 @@
 import 'server-only';
 import { pgTable, serial, varchar, date } from 'drizzle-orm/pg-core';
-import { Post, User } from './interface';
+import { ApiResponse, Post, User } from './interface';
 import { db } from './drizzle.config';
 import { tablePosts, tableUsers } from './DBmodel';
 import { eq } from 'drizzle-orm';
-import { hashPassword } from './authLogin';
+import { comparePassword, hashPassword } from './authLogin';
 
 
 export async function getUsers(): Promise<Partial<User>[]>{
@@ -79,7 +79,7 @@ export async function getPosts(): Promise<Partial<Post>[]>{
     const data = await db.select({
         id : tablePosts.id,
         title : tablePosts.title,
-        author_id : tableUsers.name,
+        author_id : tableUsers.name ,
         content : tablePosts.content,
         category : tablePosts.category,
         createdAt : tablePosts.createdAt,
@@ -144,3 +144,47 @@ export async function deletePost(id : number){
         deletedId : tablePosts.id
     })
 }
+
+export const loginUser = async (email : string, password : string) : Promise<ApiResponse<Omit<User, 'password'>>>=> {
+    try{
+      const user = await db.select().from(tableUsers).where(eq(tableUsers.email, email)).execute();
+  
+  
+      if(user.length === 0){
+        return{
+          success : false,
+          message : 'Email atau password anda salah',
+          data : null
+        }  
+      }
+  
+  
+      if(comparePassword(password, user[0].password)){
+        return{
+          success : true,
+          message : 'Login Success',
+          data : {
+            id : user[0].id,
+            nama : user[0].name,
+            email : user[0].email,
+            role : user[0].role
+          }    
+        }
+      }else{
+        return{
+          success : false,
+          message : 'Email atau password anda salah',
+          data : null
+        }  
+      }
+  
+        
+      
+    }catch(e){
+      return{
+        success : false,
+        message : 'Server Error',
+        data : null
+      }
+    }
+  }
