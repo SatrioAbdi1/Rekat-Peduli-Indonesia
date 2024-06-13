@@ -1,31 +1,15 @@
+"use client"
 import * as React from 'react';
 import {Button, Box,TableBody, Table, TableCell, TableContainer, TableHead, TableRow, Paper, Typography} from '@mui/material';
 import { Post } from '@/lib/interface';
 import Link from 'next/link';
 
-function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number,
-) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
 export interface DataTableProps {
-  posts : Post[]
+  posts : Post[],
+  deletePost : (id : number) => void
 }
 
-export function PostsTable({posts}: DataTableProps) {
+export function PostsTable({posts, deletePost}: DataTableProps) {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 100, overflow : 'auto', whiteSpace : 'nowrap' }} aria-label="simple table">
@@ -49,16 +33,16 @@ export function PostsTable({posts}: DataTableProps) {
               <TableCell component="th" scope="row">
                 {row.title}
               </TableCell>
-              <TableCell >{row.author}</TableCell>
+              <TableCell >{row.author_id}</TableCell>
               <TableCell>{row.category}</TableCell>
-              <TableCell>{row.createdAt}</TableCell>
-              <TableCell>{row.updatedAt}</TableCell>
+              <TableCell>{row.createdAt.toString()}</TableCell>
+              <TableCell>{row.updatedAt.toString()}</TableCell>
               <TableCell>
                 <Box display={'flex'} flexDirection={'row'}>
-                <Link href="/admin/posts/edit">
+                <Link href={`/admin/posts/edit?id=${row.id}`}>
                 <Button color='inherit' sx={{marginRight : '8px'}} variant='contained'>Edit</Button>
                 </Link>
-                <Button variant='contained'>Hapus</Button>
+                <Button onClick={() => deletePost(row.id)} variant='contained'>Hapus</Button>
                 </Box>
             </TableCell>
             </TableRow>

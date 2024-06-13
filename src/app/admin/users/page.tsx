@@ -3,31 +3,10 @@ import {Typography, Button, Box} from '@mui/material'
 import { UsersTable } from "./users.table";
 import { User } from "@/lib/interface";
 import Link from "next/link";
-
-function createUsers(
-    id: string,
-    name: string,
-    email: string,
-    role: string,
-    createdAt: string,
-    updatedAt: string,    
-  ): User {
-    return { 
-        id,
-        name,
-        email,
-        role,
-        createdAt,
-        updatedAt,        
-     };
-  }
-  
-  const rows = [
-    createUsers('1', 'How to Make Cupcake', 'Cupcake cup', 'Tutorial', '2012-07-14T01:00:00+01:00', '2012-07-14T01:00:00+01:00'),
-  ];
-  
+import { getUsers } from "@/lib/query";
 
 export default async function UsersPage(){
+  const users = await getUsers();
     return(
         <Sidebar>
             <Box sx={{display: 'flex', flexDirection : 'row', marginBottom : '24px', alignItems : 'center'}}>
@@ -36,7 +15,7 @@ export default async function UsersPage(){
             <Button  variant="outlined">Tambah</Button>
             </Link>
             </Box>
-            <UsersTable users={rows}/>
+            <UsersTable users={users}/>
         </Sidebar>
 
     )

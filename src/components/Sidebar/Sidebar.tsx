@@ -1,20 +1,22 @@
 "use client"
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import {Mode, People} from '@mui/icons-material';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+import {
+  AppBar, 
+  Box, 
+  CssBaseline, 
+  Divider, 
+  Drawer,
+  Button,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Toolbar,
+  Typography
+} from '@mui/material';
+import {Mode, People, Menu as MenuIcon} from '@mui/icons-material';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -104,13 +106,14 @@ export function Sidebar(props: Props){
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar
-          position="fixed"
+          position="fixed"          
           sx={{
             width: { sm: `calc(100% - ${drawerWidth}px)` },
             ml: { sm: `${drawerWidth}px` },
+            display : {sm : 'none'}
           }}
         >
-          <Toolbar >
+          <Toolbar>
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -121,8 +124,22 @@ export function Sidebar(props: Props){
               <MenuIcon />
             </IconButton>
       
-          </Toolbar>
+          </Toolbar>         
+          
         </AppBar>
+        <Box 
+          position="fixed"
+          sx={{
+            height : '64px',           
+            width: { sm: `calc(100% - ${drawerWidth}px)` },
+            ml: { sm: `${drawerWidth}px` }, 
+            display : {sm: ''},
+          }}>
+            <Box sx={{display : 'flex', justifyContent : 'flex-end'}}>
+            <Button sx={{margin : '14px'}} variant='outlined'>Log Out</Button>
+            </Box>
+            <Divider/>
+        </Box>
         <Box
           component="nav"
           sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}

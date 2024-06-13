@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 
 export interface UsersTableProps {
-    users : User[]
+    users : Partial<User>[]
 }
 
 export function UsersTable({users}: UsersTableProps) {
@@ -18,8 +18,6 @@ export function UsersTable({users}: UsersTableProps) {
             <TableCell sx={{maxWidth : '150px'}} ><Typography variant='subtitle1' fontWeight={600}>Nama</Typography></TableCell>
             <TableCell sx={{maxWidth : '150px'}} ><Typography variant='subtitle1' fontWeight={600}>Email</Typography></TableCell>
             <TableCell sx={{maxWidth : '150px'}} ><Typography variant='subtitle1' fontWeight={600}>Role</Typography></TableCell>
-            <TableCell sx={{maxWidth : '150px'}} ><Typography variant='subtitle1' fontWeight={600}>Tanggal dibuat</Typography></TableCell>
-            <TableCell sx={{maxWidth : '150px'}} ><Typography variant='subtitle1' fontWeight={600}>Tanggal diedit</Typography></TableCell>
             <TableCell sx={{maxWidth : '150px'}} ><Typography variant='subtitle1' fontWeight={600}>Aksi</Typography></TableCell>
 
           </TableRow>
@@ -35,14 +33,12 @@ export function UsersTable({users}: UsersTableProps) {
               </TableCell>
               <TableCell >{row.email}</TableCell>
               <TableCell>{row.role}</TableCell>
-              <TableCell>{row.createdAt}</TableCell>
-              <TableCell>{row.updatedAt}</TableCell>
               <TableCell>
                 <Box display={'flex'} flexDirection={'row'}>
-                <Link href="/admin/user/edit">
+                <Link href={`/admin/users/edit?id=${row.id}`}>
                 <Button color='inherit' sx={{marginRight : '8px'}} variant='contained'>Edit</Button>
                 </Link>
-                <Button variant='contained'>Hapus</Button>
+                <Button  variant='contained'>Hapus</Button>
                 </Box>
             </TableCell>
             </TableRow>
