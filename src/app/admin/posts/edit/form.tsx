@@ -34,7 +34,7 @@ export function FormEditPost({data, id} : {data : Partial<Post>, id : number}){
                 <Typography variant='caption' color="grey" marginLeft={'8px'} fontWeight={500}> (max 60 karakter)</Typography>
 
                 </Box>
-                <Input inputProps={{maxLength : 60}} name="title" defaultValue={state?.title} sx={{backgroundColor : 'white',borderRadius : '4px', borderWidth : '1px', color : 'black', height : '36px', minWidth : {sm : '100%',md :'36vh'}, fontFamily : montserrat.style.fontFamily, fontSize : '16px', fontWeight : 500}} id="outlined-basic"   />
+                <Input name="title" defaultValue={state?.title} sx={{backgroundColor : 'white',borderRadius : '4px', borderWidth : '1px', color : 'black', height : '36px', minWidth : {sm : '100%',md :'36vh'}, fontFamily : montserrat.style.fontFamily, fontSize : '16px', fontWeight : 500}} id="outlined-basic"   />
                 </Box>
                 
                 <Box sx={{marginBottom : '32px'}}>

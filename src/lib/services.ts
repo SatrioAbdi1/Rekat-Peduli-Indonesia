@@ -115,18 +115,20 @@ export async function getPost(id : number): Promise<Partial<Post>>{
     }
 }
 
-export async function getPostByCategory(category : string): Promise<Partial<Post>>{
+export async function getPostByCategory(category : string): Promise<Partial<Post>[]>{
     const data = await db.select().from(tablePosts).where(eq(tablePosts.category, category)).execute();
-    return {
-        id : data[0].id ?? '-',
-        title : data[0].title ?? '-',
-        author_id : data[0].author_id ?? '-',
-        content : data[0].content ?? '-',
-        category : data[0].category ?? '-',
-        createdAt : data[0].createdAt ?? '-',
-        updatedAt : data[0].updatedAt ?? '-',
-        thumbnail : data[0].thumbnail ?? '-',
-    }
+    return data.map((post) => {
+        return {
+            id : post.id ?? '-',
+            title : post.title ?? '-',
+            author_id : post.author_id ?? '-',
+            content : post.content ?? '-',
+            category : post.category ?? '-',
+            createdAt : post.createdAt ?? '-',
+            updatedAt : post.updatedAt ?? '-',
+            thumbnail : post.thumbnail ?? '-',
+        }
+    })
 }
 
 export async function editPost(id : number, data : Partial<Post>){

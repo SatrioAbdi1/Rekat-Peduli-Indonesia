@@ -19,6 +19,7 @@ import {
 import {Mode, People, Menu as MenuIcon} from '@mui/icons-material';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ButtonLogout } from '../ButtonLogout';
 
 
 const drawerWidth = 240;
@@ -136,7 +137,7 @@ export function Sidebar(props: Props){
             display : {sm: ''},
           }}>
             <Box sx={{display : 'flex', justifyContent : 'flex-end'}}>
-            <Button sx={{margin : '14px'}} variant='outlined'>Log Out</Button>
+              <ButtonLogout/>
             </Box>
             <Divider/>
         </Box>

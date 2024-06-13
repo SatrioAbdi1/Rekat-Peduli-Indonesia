@@ -8,7 +8,7 @@ import { ElevatedCard } from "@/components/Card";
 import DrawerAppBar from "@/components/Appbar/Appbar";
 import { Footer } from "@/components/Footer/Footer";
 import Link from "next/link";
-import { getPosts } from "@/lib/services";
+import { getPostByCategory, getPosts } from "@/lib/services";
 
 export const metadata: Metadata = {
   title: "Yayasan Rekat Peduli Indonesia",
@@ -16,7 +16,12 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const posts = await getPosts();
+  const posts = (await getPosts()).slice(0,2);
+  const artikel = (await getPostByCategory('Artikel')).slice(0,2);
+  const dampakkami = (await getPostByCategory('Dampak Kami')).slice(0,2);
+
+  console.log(artikel, 'artikel')
+
   return (
     <DrawerAppBar>
     <main style={{
@@ -95,7 +100,7 @@ export default async function Home() {
         <Typography variant="h4" fontWeight={600}>Dampak Kami</Typography>
         <Typography variant="h6" marginTop={'8px'}>Jelajahi dampak apa saja yang sudah kami lakukan hingga saat ini</Typography>
         <div style={{marginTop : '24px', flexDirection : 'row', display : 'flex', justifyContent : 'space-between'}}>
-        {posts.map((item,index) => {
+        {dampakkami.map((item,index) => {
             return(
               <div key={index}>
               <ElevatedCard data={item}/>
@@ -130,7 +135,7 @@ export default async function Home() {
         <Typography variant="h4" fontWeight={600}>Blog</Typography>
         <Typography variant="h6" marginTop={'8px'}>Jelajahi dampak apa saja yang sudah kami lakukan hingga saat ini</Typography>
         <div style={{marginTop : '24px', flexDirection : 'row', display : 'flex', justifyContent : 'space-between'}}>
-          {posts.map((item,index) => {
+          {artikel.map((item,index) => {
             return(
               <div key={index}>
               <ElevatedCard data={item}/>

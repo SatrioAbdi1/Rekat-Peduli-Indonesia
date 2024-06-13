@@ -6,6 +6,7 @@ import { PostsTable } from "./posts-table";
 import Link from "next/link";
 import { deletePost, getPosts } from "@/lib/services";
 import { redirect } from "next/navigation";
+import { ButtonLogout } from "@/components/ButtonLogout";
 
 
 
