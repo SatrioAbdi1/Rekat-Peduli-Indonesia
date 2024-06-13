@@ -2,6 +2,7 @@ import { Sidebar } from "@/components/Sidebar/Sidebar";
 import {Typography} from '@mui/material';
 import { FormEditPost } from "./form";
 import { getPost } from "@/lib/services";
+import { FormAddPost } from "../add/form";
 
 
 export default async function EditPostPage(request : {searchParams : {id: number}, params : Object}){

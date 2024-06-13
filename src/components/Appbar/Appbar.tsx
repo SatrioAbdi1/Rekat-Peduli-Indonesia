@@ -68,7 +68,6 @@ export default function DrawerAppBar(props: Props) {
     </Box>
   );
 
-  const container = global.window !== undefined ? () => window.document.body : undefined;
 
 
 
@@ -108,7 +107,6 @@ export default function DrawerAppBar(props: Props) {
       </AppBar>
       <nav>
         <Drawer
-          container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}

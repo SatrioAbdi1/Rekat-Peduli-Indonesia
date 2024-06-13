@@ -1,6 +1,6 @@
-import { Sidebar } from "@/components/Sidebar/Sidebar";
 import {Typography} from '@mui/material'
 import { FormAddUser } from "./form";
+import { Sidebar } from "@/components/Sidebar/Sidebar";
 
 
 

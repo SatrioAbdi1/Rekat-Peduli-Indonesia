@@ -20,7 +20,6 @@ export default async function Home() {
   const artikel = (await getPostByCategory('Artikel')).slice(0,2);
   const dampakkami = (await getPostByCategory('Dampak Kami')).slice(0,2);
 
-  console.log(artikel, 'artikel')
 
   return (
     <DrawerAppBar>

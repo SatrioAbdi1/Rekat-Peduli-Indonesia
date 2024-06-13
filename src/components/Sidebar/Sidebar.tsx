@@ -29,7 +29,6 @@ interface Props {
    * Injected by the documentation to work in an iframe.
    * Remove this when copying and pasting into your project.
    */
-  window?: () => Window;
   children: React.ReactNode;
 }
 
@@ -42,7 +41,7 @@ interface SidebarData {
 
 
 export function Sidebar(props: Props){
-    const { window, children } = props;
+    const {  children } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const [isClosing, setIsClosing] = React.useState(false);
   
@@ -101,7 +100,6 @@ export function Sidebar(props: Props){
     );
   
     // Remove this const when copying and pasting into your project.
-    const container = window !== undefined ? () => window().document.body : undefined;
   
     return (
       <Box sx={{ display: 'flex' }}>
@@ -148,7 +146,6 @@ export function Sidebar(props: Props){
         >
           {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
           <Drawer
-            container={container}
             variant="temporary"
             open={mobileOpen}
             onTransitionEnd={handleDrawerTransitionEnd}
@@ -178,7 +175,6 @@ export function Sidebar(props: Props){
           component="main"
           sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
         >
-          <Toolbar />
         {children}
         </Box>
       </Box>

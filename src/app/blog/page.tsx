@@ -12,7 +12,6 @@ import { getPosts } from '@/lib/services';
 export default async function BlogsPage (){
     const posts = await getPosts()
 
-    console.log(posts, 'postsnya')
     return(
         <DrawerAppBar>
 
@@ -21,7 +20,8 @@ export default async function BlogsPage (){
             flexDirection: 'column',
             minHeight: '70vh',
           }}>
-            
+
+
             <Container maxWidth="lg" style={{paddingRight : '128px', paddingLeft : '128px', marginTop : '72px', marginBottom : '64px'}}>
             <Grid container spacing={4}>
             {posts.map((item) => {
