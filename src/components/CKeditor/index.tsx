@@ -62,10 +62,6 @@ const Editor = ({
     <CKEditor
       editor={ClassicEditor}
       data={value}
-      // onInit={editor => {
-      //   // You can store the "editor" and use when it is needed.
-      //   console.log('Editor is ready to use!', editor)
-      // }}
       config={{
         ckfinder : {
           uploadUrl : 'http://localhost:8999/upload'

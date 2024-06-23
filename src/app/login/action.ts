@@ -3,8 +3,10 @@
 import { ApiResponse, User } from "@/lib/interface";
 import {  signIn } from "@/lib/auth";
 import { redirect } from 'next/navigation'
+import { createUser } from "@/lib/services";
 
 export const handleFormLogin = async (formState: any, formData : FormData) => {
+
 
     const response : ApiResponse<User> = await fetch(`${process.env.URL}/login/api`,{
         method : 'POST',

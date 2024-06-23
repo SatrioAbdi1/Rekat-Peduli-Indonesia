@@ -19,11 +19,13 @@ export async function getUsers(): Promise<Partial<User>[]>{
     })
 }
 
-export async function createUser(data : Partial<User>){
+export async function createUser(data : Partial<User>){  'use server'
+
+    const hashedPassword = hashPassword(data.password)
     await db.insert(tableUsers).values({
         name : data.name,
         email : data.email,
-        password : data.password,
+        password : hashedPassword,
         role : data.role,
     }).execute();
 }
@@ -74,7 +76,6 @@ export async function deleteUser(id : number){
 }
 
 export async function addPost(data : Partial<Post>){
-    console.log(data, 'datanyapost')
     await db.insert(tablePosts).values({
         title : data.title,
         author_id : data.author_id,
@@ -86,17 +87,19 @@ export async function addPost(data : Partial<Post>){
 }
 
 export async function getPosts(): Promise<Partial<Post>[]>{
-    const data = await db.select({
-        id : tablePosts.id,
-        title : tablePosts.title,
-        author_id : tableUsers.name ,
-        content : tablePosts.content,
-        category : tablePosts.category,
-        createdAt : tablePosts.createdAt,
-        updatedAt : tablePosts.updatedAt,
-        thumbnail : tablePosts.thumbnail,
-        name : tableUsers.name,
-    }).from(tablePosts).leftJoin(tableUsers, eq(tableUsers.id, tablePosts.author_id)).execute();
+    // const data = await db.select({
+    //     id : tablePosts.id,
+    //     title : tablePosts.title,
+    //     author_id : tableUsers.name ,
+    //     content : tablePosts.content,
+    //     category : tablePosts.category,
+    //     createdAt : tablePosts.createdAt,
+    //     updatedAt : tablePosts.updatedAt,
+    //     thumbnail : tablePosts.thumbnail,
+    //     name : tableUsers.name,
+    // }).from(tablePosts).rightJoin(tableUsers, eq(tableUsers.id, tablePosts.author_id)).execute();
+
+    const data = await db.select().from(tablePosts).execute();
     return data.map((post) => {
         return {
             id : post.id ?? '-',
