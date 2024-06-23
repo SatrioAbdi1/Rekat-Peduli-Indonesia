@@ -1,31 +1,86 @@
 "use client"
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
+// import ClassicEditorType from "@ckeditor/ckeditor5-build-classic";
+// import  { CKEditor as CKEditorType } from "@ckeditor/ckeditor5-react";
 
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 
 
 interface EditorProps {
   value : string,
   onChange : (value : string) => void
-
 }
+
+
+const editorConfiguration = {
+  toolbar: {
+  items: [
+  "heading",
+  "|",
+  "bold",
+  "italic",
+  "link",
+  "bulletedList",
+  "numberedList",
+  "|",
+  "outdent",
+  "indent",
+  "|",
+  "imageUpload",
+  "blockQuote",
+  "insertTable",
+  "mediaEmbed",
+  "undo",
+  "redo",
+  ],
+  },
+  language: "en",
+  };
+
 
 const Editor = ({
   value,
   onChange
 } : EditorProps) => {
+  const editorRef = useRef();
+  const [editorLoaded, setEditorLoaded] = useState(false)
+  const { CKEditor, ClassicEditor } = editorRef.current || {}
+
+
+  useEffect(() => {
+    editorRef.current = {
+      // CKEditor: require('@ckeditor/ckeditor5-react'), // depricated in v3
+      CKEditor: require('@ckeditor/ckeditor5-react').CKEditor, // v3+
+      ClassicEditor: require("@ckeditor/ckeditor5-build-classic"),
+    }
+   setEditorLoaded(true)
+  }, [])
+
   
-  return (
-    <CKEditor      
+  
+  
+  return editorLoaded ? (
+    <CKEditor
       editor={ClassicEditor}
       data={value}
+      // onInit={editor => {
+      //   // You can store the "editor" and use when it is needed.
+      //   console.log('Editor is ready to use!', editor)
+      // }}
+      config={{
+        ckfinder : {
+          uploadUrl : 'http://localhost:8999/upload'
+        }
+      }}
+      
       onChange={(event, editor) => {
-        const data = editor.getData();
+        const data = editor.getData()
         onChange(data)
+        console.log('datanya',{ event, editor, data })
       }}
     />
-  );
+  ) : (
+    <div>Editor loading</div>
+  )
 };
 
 export {Editor} 

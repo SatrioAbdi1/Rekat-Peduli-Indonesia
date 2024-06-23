@@ -9,6 +9,7 @@ export const {
   signIn,
   signOut
 } = NextAuth({
+  trustHost : true,
   pages : {
     signIn : '/login',
   },
@@ -35,7 +36,6 @@ export const {
       const isOnLogin = nextUrl.pathname.startsWith('/login')
 
 
-      console.log(isLoggedIn && isOnLogin, 'authnya')
 
       if(isLoggedIn && isOnLogin) {
         return Response.redirect(new URL('/admin/posts', nextUrl))
@@ -47,15 +47,7 @@ export const {
 
       }
 
-      return true
-
-
-      
-
-     
-      
-
- 
+      return true      
 
     }
 }})

@@ -30,8 +30,17 @@ export async function createUser(data : Partial<User>){
 
 export async function getUser(id : number): Promise<Partial<User>>{
     const data = await db.select().from(tableUsers).where(eq(tableUsers.id, id)).execute();
+    if(data.length === 0){
+        return{
+            id : 0,
+            name : '-',
+            email : '-',
+            role : '-',
+            password : '-',
+        }
+    }
     return {
-        id : data[0].id ?? '-',
+        id : data[0].id ?? 0,
         name : data[0].name ?? '-',
         email : data[0].email ?? '-',
         role : data[0].role ?? '-',
@@ -65,6 +74,7 @@ export async function deleteUser(id : number){
 }
 
 export async function addPost(data : Partial<Post>){
+    console.log(data, 'datanyapost')
     await db.insert(tablePosts).values({
         title : data.title,
         author_id : data.author_id,

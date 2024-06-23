@@ -12,6 +12,7 @@ import { getPosts } from '@/lib/services';
 export default async function BlogsPage (){
     const posts = await getPosts()
 
+
     return(
         <DrawerAppBar>
 

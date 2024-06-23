@@ -16,8 +16,11 @@ export function FormAddPost(){
     )
 
     const onChangeEditor = (value : string) => {
+        console.log(value ,'valuenya')
         setDataEditor(value)
     }
+
+
 
     return(
         <Box maxWidth={"lg"}>
@@ -34,6 +37,7 @@ export function FormAddPost(){
                 <Box sx={{marginBottom : '32px'}}>
                 <Typography variant='body1' fontWeight={500} marginBottom={'8px'}>Thumbnail Image URL</Typography>
                 <Input type='url' name="thumbnail" defaultValue={state?.thumbnail} sx={{backgroundColor : 'white',borderRadius : '4px', borderWidth : '1px', color : 'black', height : '36px', width : {sm : '100%',md :'36vh'}, fontFamily : montserrat.style.fontFamily, fontSize : '16px', fontWeight : 500}} id="outlined-basic"   />
+                {/* <Input type="file" name="uploadfile" /> */}
                 </Box>                              
                 <Editor value={dataEditor} onChange={onChangeEditor}/>
                 <Box sx={{marginBottom : '16px', marginTop : '16px'}}>
