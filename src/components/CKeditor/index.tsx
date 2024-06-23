@@ -64,7 +64,7 @@ const Editor = ({
       data={value}
       config={{
         ckfinder : {
-          uploadUrl : 'http://localhost:8999/upload'
+          uploadUrl : 'https://api.rekat4indonesia.com/upload'
         }
       }}
       
