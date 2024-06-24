@@ -15,6 +15,8 @@ export default defineConfig({
 
 export const db = drizzle(
   neon(process.env.POSTGRES_URL!, {
-
+    fetchOptions: {
+      cache: 'no-store'
+    }
   })
 );

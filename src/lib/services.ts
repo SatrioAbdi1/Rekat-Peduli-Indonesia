@@ -98,7 +98,15 @@ export async function getPosts(): Promise<Partial<Post>[]>{
     //     thumbnail : tablePosts.thumbnail,
     //     name : tableUsers.name,
     // }).from(tablePosts).rightJoin(tableUsers, eq(tableUsers.id, tablePosts.author_id)).execute();
-
+    // await addPost(
+    //     {
+    //         thumbnail : 'thumbnail',
+    //         title : 'title',
+    //         author_id : 15,
+    //         content : 'content',
+    //         category : 'category'            
+    //     }
+    // )
     const data = await db.select().from(tablePosts).execute();
     return data.map((post) => {
         return {
@@ -112,6 +120,19 @@ export async function getPosts(): Promise<Partial<Post>[]>{
             thumbnail : post.thumbnail ?? '-',
         }
     })
+
+    // return [1].map(() => {
+    //     return {
+    //         id : 1,
+    //         title : 'title',
+    //         author_id : 1,
+    //         content : 'content',
+    //         category : 'category',
+    //         createdAt : 'createdAt',
+    //         updatedAt : 'updatedAt',
+    //         thumbnail : 'thumbnail',
+    //     }
+    // })
 }
 
 export async function getPost(id : number): Promise<Partial<Post>>{
