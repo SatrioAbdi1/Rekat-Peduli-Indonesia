@@ -2,10 +2,10 @@
 import { addPost } from "@/lib/services"
 import { redirect } from "next/navigation"
 
-export const handleForm = async (_ : any,formData : FormData, dataEditor: string) => {
+export const handleForm = async (_ : any,formData : FormData, dataEditor: string, thumbnail: string) => {
     const title = formData.get('title')?.toString() ?? ''
     const category = formData.get('category')?.toString() ?? ''
-    const thumbnail = formData.get('thumbnail')?.toString() ?? ''
+    // const thumbnail = formData.get('thumbnail')?.toString() ?? ''
     const editor = dataEditor
 
     const formReturn = {

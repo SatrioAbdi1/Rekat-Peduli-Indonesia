@@ -65,7 +65,40 @@ const Editor = ({
       config={{
         ckfinder : {
           uploadUrl : 'https://api.rekat4indonesia.com/upload'
-        }
+        },
+        image: {
+          resizeOptions: [
+          {
+              name: 'resizeImage:original',
+              value: null,
+              icon: 'original'
+          },
+          {
+              name: 'resizeImage:custom',
+              value: 'custom',
+              icon: 'custom'
+          },
+          {
+              name: 'resizeImage:50',
+              value: '50',
+              icon: 'medium'
+          },
+          {
+              name: 'resizeImage:75',
+              value: '75',
+              icon: 'large'
+          }
+      ],
+      toolbar: [
+        'resizeImage:50',
+        'resizeImage:75',
+        'resizeImage:original',
+        'resizeImage:custom',
+        // More toolbar options.
+        // ...
+    ]
+    }
+        
       }}
       
       onChange={(event, editor) => {
