@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://rekat4indonesia.com')  
 }
 
+export const dynamic = 'force-dynamic'
+
+
 export default async function RootLayout({
   children,
 }: Readonly<{
