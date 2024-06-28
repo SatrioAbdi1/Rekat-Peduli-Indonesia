@@ -36,7 +36,7 @@ export default async function BlogPage({ params,searchParams }: { params: { slug
             </Box>
 
             <Box mt={'64px'}>
-                <RenderHtml content={content}/>
+                <RenderHtml content={post.content}/>
             </Box>
         
 

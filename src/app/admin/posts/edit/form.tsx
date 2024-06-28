@@ -1,19 +1,21 @@
 "use client"
 import {useState,useActionState} from 'react'
 import {Box, Typography, Input, Button, NativeSelect} from '@mui/material';
-import { Montserrat } from 'next/font/google'
 import { handleForm } from './action';
 import { Editor } from '@/components/CKeditor';
 import { Post } from '@/lib/interface';
+import axios from 'axios';
+import { Montserrat } from '@/app/font';
 
 
-const montserrat = Montserrat({ subsets: ['latin'] })
+const montserrat = Montserrat;
 
 export function FormEditPost({data, id} : {data : Partial<Post>, id : number}){
     const [dataEditor, setDataEditor] = useState<string>(data.content)
+    const [filePath, setFilePath] = useState(data.thumbnail);
 
     const [state, formAction] = useActionState(
-        (_ : any, formData : FormData) => handleForm(_, formData, dataEditor, id), {
+        (_ : any, formData : FormData) => handleForm(_, formData, dataEditor, id, filePath), {
             title : data.title,
             editor : data.content,
             category : data.category,
@@ -24,6 +26,25 @@ export function FormEditPost({data, id} : {data : Partial<Post>, id : number}){
     const onChangeEditor = (value : string) => {
         setDataEditor(value)
     }
+
+    const onFileChange = async e => {
+        const formData = new FormData();
+        formData.append('upload', e.target.files[0]);
+        formData.append('ckCsrfToken', "e.target.files[0]");
+    
+        try {
+          const res = await axios.post('https://api.rekat4indonesia.com/upload', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+          });
+    
+          const { url } = res.data;
+          setFilePath(url);
+        } catch (err) {
+          console.log(err ,'errornya')
+        }
+      };
 
     return(
         <Box maxWidth={"lg"}>
@@ -37,11 +58,14 @@ export function FormEditPost({data, id} : {data : Partial<Post>, id : number}){
                 <Input name="title" defaultValue={state?.title} sx={{backgroundColor : 'white',borderRadius : '4px', borderWidth : '1px', color : 'black', height : '36px', minWidth : {sm : '100%',md :'36vh'}, fontFamily : montserrat.style.fontFamily, fontSize : '16px', fontWeight : 500}} id="outlined-basic"   />
                 </Box>
                 
-                <Box sx={{marginBottom : '32px'}}>
+                <Box sx={{marginBottom : '32px', display: 'flex', flexDirection: 'column'}}>
                 <Typography variant='body1' fontWeight={500} marginBottom={'8px'}>Thumbnail Image URL</Typography>
-                <Input type='url' name="thumbnail" defaultValue={state?.thumbnail} sx={{backgroundColor : 'white',borderRadius : '4px', borderWidth : '1px', color : 'black', height : '36px', width : {sm : '100%',md :'36vh'}, fontFamily : montserrat.style.fontFamily, fontSize : '16px', fontWeight : 500}} id="outlined-basic"   />
-                </Box>                              
+                <Input onChange={onFileChange} type='file' name="thumbnail" sx={{backgroundColor : 'white',borderRadius : '4px', borderWidth : '1px', color : 'black', height : '36px', width : {sm : '100%',md :'36vh'}, fontFamily : montserrat.style.fontFamily, fontSize : '16px', fontWeight : 500}} id="outlined-basic"   />
+                
+                {filePath && <img src={filePath} style={{width: '300px', marginTop : '16px'}} />}      
+                </Box>                                        
                 <Editor value={dataEditor} onChange={onChangeEditor}/>
+                
                 <Box sx={{marginBottom : '16px', marginTop : '16px'}}>
                 <Typography variant='body1' fontWeight={500} marginBottom={'8px'}>Kategori</Typography>
                 <NativeSelect

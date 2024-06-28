@@ -1,13 +1,13 @@
 "use client"
 import {useState,useActionState,} from 'react'
 import {Box, Typography, Input, Button, NativeSelect} from '@mui/material';
-import { Montserrat } from 'next/font/google'
 import { handleForm } from './action';
 import { Editor } from '@/components/CKeditor';
 import axios from 'axios';
+import { Montserrat } from '@/app/font';
 
 
-const montserrat = Montserrat({ subsets: ['latin'] })
+const montserrat = Montserrat;
 
 export function FormAddPost(){
     const [dataEditor, setDataEditor] = useState<string>('')

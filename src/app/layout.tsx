@@ -7,10 +7,10 @@ import theme from './theme';
 import "./globals.css";
 import DrawerAppBar from "@/components/Appbar/Appbar";
 import { Footer } from "@/components/Footer/Footer";
+import { Montserrat } from "./font";
 
 // const inter = Montserrat({ subsets: ["latin"] });
 
-const Montserrat = localFont({ src:  '../../public/fonts/Montserrat-Regular.ttf'})
 
 
 export const metadata: Metadata = {
