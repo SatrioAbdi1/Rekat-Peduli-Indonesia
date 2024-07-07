@@ -34,7 +34,7 @@ export function FormLogin(){
         try {
             const res = await handleFormLogin(email, password);
             if (res?.success) {
-                router.push('/pasien'); // Redirect on success
+                router.push('/admin/posts'); // Redirect on success
             } 
         } catch (error) {
             console.error(error); // Log the error for debugging purposes
