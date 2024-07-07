@@ -1,3 +1,4 @@
+"use client"
 import {Button as ButtonMaterial, ButtonOwnProps,ExtendButtonBase,ButtonTypeMap } from '@mui/material';
 import { ReactElement, ButtonHTMLAttributes } from 'react';
 import { useFormStatus } from 'react-dom';
