@@ -65,7 +65,7 @@ export function FormLogin(){
 
         <Typography color={'red'} variant='body1' fontWeight={500} marginBottom={'8px'}>{formState?.message}</Typography>
 
-        <Button loading={true} type="submit" sx={{ height : '48px'}} variant="contained">
+        <Button loading={loading} type="submit" sx={{ height : '48px'}} variant="contained">
             Masuk
         </Button>
     </form>
