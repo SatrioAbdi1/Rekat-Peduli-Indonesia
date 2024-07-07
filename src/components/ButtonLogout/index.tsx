@@ -1,8 +1,6 @@
 "use server"
-import {
-    Button
-} from '@mui/material';
 import { auth, signIn, signOut } from '@/lib/auth';
+import { Button } from '../Button';
 
 
 export async function ButtonLogout(){
